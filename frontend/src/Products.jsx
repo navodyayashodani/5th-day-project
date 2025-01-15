@@ -101,6 +101,9 @@ function Products() {
   return (
     <section className="px-8 py-8">
       <h2 className="text-4xl font-bold">Our Top Products</h2>
+      <div>
+        <button>GET Products</button>
+      </div>
       <Separator className="mt-2" />
       <div className="mt-4 flex items-center gap-4">
         {categories.map((category) => (

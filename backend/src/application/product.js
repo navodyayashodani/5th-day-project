@@ -8,8 +8,6 @@ const products = [
     id: "1",
     name: "AirPods Max",
     price: "549.00",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, sequi?",
   },
   {
     categoryId: "3",
