@@ -3,8 +3,6 @@ import Navigation from "./Navigation";
 import Products from "./Products";
 
 
-
-
 function App() {
 
   const name="Harindi";
@@ -16,13 +14,6 @@ function App() {
       <Navigation name={name} cartCount={cartCount} />
       <Hero />
       <Products />
-      
-      
-      
-    
-
-
-
     </div>
   );
 }
