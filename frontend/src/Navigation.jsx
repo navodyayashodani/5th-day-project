@@ -1,5 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 import "./Navigation.css";
+import { Link } from "react-router";
 
 function Navigation(props) {
 

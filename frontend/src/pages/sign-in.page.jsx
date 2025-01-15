@@ -20,7 +20,7 @@ export default function SignInPage() {
         <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
           <div className="text-center space-y-2">
             <h1 className="text-2xl font-semibold tracking-tight">
-              Sign in to StoreFRONT
+              Sign in to Mebius
             </h1>
             <p className="text-sm text-muted-foreground">
               Welcome back! Please sign in to continue

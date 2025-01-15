@@ -25,7 +25,7 @@ export default function SignUpPage() {
               Create your account
             </h1>
             <p className="text-sm text-muted-foreground">
-              Sign up to get started with StoreFRONT
+              Sign up to get started with Mebius
             </p>
           </div>
           <form onSubmit={handleSignUp} className="space-y-4">
