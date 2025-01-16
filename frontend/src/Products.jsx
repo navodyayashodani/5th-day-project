@@ -2,6 +2,7 @@ import ProductCards from "./ProductCards";
 import { Separator } from "@/components/ui/separator";
 import Tab from "./Tab";
 import { useState } from "react";
+import { Button } from "./components/ui/button";
 
 function Products() {
   const products = [
@@ -88,7 +89,7 @@ function Products() {
     { _id: "5", name: "Smart Watches" },
   ];
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState("1");
+  const [selectedCategoryId, setSelectedCategoryId] = useState("ALL");
   const filteredProducts =
     selectedCategoryId === "ALL"
       ? products
@@ -98,11 +99,29 @@ function Products() {
         setSelectedCategoryId(_id)
     }
 
+    const getProducts = () => {
+      const data = fetch("http://localhost:8000/api/products", {
+        method: "GET",
+        headers: {
+          "content-Type": "application.json",
+        },
+      });
+      console.log(data);
+      data
+        .then((res)=>{
+          console.log(res);
+          const dataPromise = res.json();
+          console.log(dataPromise);
+        })
+        .then((res) => console.log(res))
+        .catch((err)=> console.log(err));
+    };
+
   return (
     <section className="px-8 py-8">
       <h2 className="text-4xl font-bold">Our Top Products</h2>
       <div>
-        <button>GET Products</button>
+        <Button onClick={() => getProducts()}>GET Products</Button>
       </div>
       <Separator className="mt-2" />
       <div className="mt-4 flex items-center gap-4">
