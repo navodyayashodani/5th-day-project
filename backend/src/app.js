@@ -9,7 +9,7 @@ import cors from "cors";
 
 const app = express();
 app.use(express.json()); // For parsing JSON requests
-app.use(cors({origin: "http://localhost:5174"}));
+app.use(cors({origin: "http://localhost:5173"}));
 
 // app.use((req, res, next) => {
 //   console.log("Recieved a Request");
