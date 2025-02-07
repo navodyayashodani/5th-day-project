@@ -1,7 +1,10 @@
-import NotFoundError from "../domain/errors/not-found-error.js";
-import Category from "../infrastructure/schemas/Category.js";
+import { CategoryDTO } from "../domain/dto/category";
+import NotFoundError from "../domain/errors/not-found-error";
+import ValidationError from "../domain/errors/validation-error";
+import Category from "../infrastructure/schemas/Category";
+import { Request, Response, NextFunction } from "express";
 
-export const getCategories = async (req, res, next) => {
+export const getCategories = async (req:Request, res:Response, next:NextFunction) => {
   try {
     const data = await Category.find();
     return res.status(200).json(data).send();
@@ -10,16 +13,23 @@ export const getCategories = async (req, res, next) => {
   }
 };
 
-export const createCategory = async (req, res, next) => {
+export const createCategory = async (req:Request, res:Response, next:NextFunction) => {
   try {
-    await Category.create(req.body);
+
+    // const result:CategoryDTO = (req.body); //Only compile time even if its wronng type in req.body
+    const result = CategoryDTO.safeParse(req.body);
+    if (!result.success) {
+      throw new ValidationError("Invalid category data");
+    }
+
+    await Category.create(result.data);
     return res.status(201).send();
   } catch (error) {
     next(error);
   }
 };
 
-export const getCategory = async (req, res, next) => {
+export const getCategory = async (req:Request, res:Response, next:NextFunction) => {
   try {
     const id = req.params.id;
     const category = await Category.findById(id);
@@ -33,7 +43,7 @@ export const getCategory = async (req, res, next) => {
   }
 };
 
-export const deleteCategory = async (req, res, next) => {
+export const deleteCategory = async (req:Request, res:Response, next:NextFunction) => {
   try {
     const id = req.params.id;
     const category = await Category.findByIdAndDelete(id);
@@ -47,7 +57,7 @@ export const deleteCategory = async (req, res, next) => {
   }
 };
 
-export const updateCategory = async (req, res, next) => {
+export const updateCategory = async (req:Request, res:Response, next:NextFunction) => {
   try {
     const id = req.params.id;
     const category = await Category.findByIdAndUpdate(id, req.body);

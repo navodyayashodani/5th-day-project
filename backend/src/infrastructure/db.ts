@@ -4,6 +4,9 @@ import 'dotenv/config';
 export const connectDB = async () => {
   try {
     const connectionString = process.env.MONGODB_URI;
+    if (!connectionString) {
+      throw new Error("No connection string found");
+    }
     await mongoose.connect(connectionString);
     console.log("Connected to the Database");
   } catch (error) {
